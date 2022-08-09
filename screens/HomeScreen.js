@@ -41,7 +41,7 @@ const HomeScreen = () => {
       });
   }, []);
 
-  console.log(featuredCategories);
+  // console.log(featuredCategories[0].restaurants);
 
   return (
     <SafeAreaView className="bg-white pt-5">

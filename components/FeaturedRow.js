@@ -23,6 +23,8 @@ const FeaturedRow = ({id, title, description}) => {
         {id},
       )
       .then(data => {
+        // console.log('DATAAAA================> ', data);
+
         setRestaurants(data?.restaurants);
       })
       .catch(error => {
