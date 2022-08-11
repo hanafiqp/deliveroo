@@ -5,7 +5,7 @@ import {selectRestaurant} from '../features/restaurantSlice';
 import {XIcon} from 'react-native-heroicons/solid';
 import * as Progress from 'react-native-progress';
 import {useNavigation} from '@react-navigation/native';
-// import MapView from 'react-native-maps';
+import MapView, {Marker} from 'react-native-maps';
 // import MapboxGL from '@react-native-mapbox-gl/maps';
 
 // MapboxGL.setAccessToken(
@@ -45,17 +45,41 @@ const DeliveryScreen = () => {
       </SafeAreaView>
 
       {/* <MapboxGL.MapView className="flex-1" /> */}
-      {/* <MapView
+      <MapView
         initialRegion={{
-          latitude: 37.78825,
-          longitude: -122.4324,
+          latitude: restaurant.lat,
+          longitude: restaurant.long,
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}
-      /> */}
-      <View>
-        <Text>Asdsad</Text>
-      </View>
+        className="flex-1 -mt-10 z-0"
+        mapType="mutedStandard">
+        <Marker
+          coordinate={{
+            latitude: restaurant.lat,
+            longitude: restaurant.long,
+          }}
+          title={restaurant.title}
+          description={restaurant.short_description}
+          identifier="origin"
+          pinColor="#00ccbb"
+        />
+      </MapView>
+
+      <SafeAreaView className="bg-white flex-row items-center space-x-5 h-28">
+        <Image
+          source={{
+            uri: 'https://links.papareact.com/wru',
+          }}
+          className="h-12 w-12 rounded-full bg-gray-300 p-4 ml-5"
+        />
+        <View className="flex-1">
+          <Text className="text-lg">Hanafiq Praditia</Text>
+          <Text className="text-gray-400">Your Rider</Text>
+        </View>
+
+        <Text className="text-lg text-[#00ccbb] mr-5 font-bold">Call</Text>
+      </SafeAreaView>
     </View>
   );
 };
